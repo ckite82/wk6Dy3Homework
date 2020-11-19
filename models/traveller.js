@@ -32,16 +32,33 @@ Traveller.prototype.calculateTotalDistanceTravelled = function () {
   }, 0)
 };
 
+// this one works after hw solution lesson, almost a combo of my first and second attempts.
 Traveller.prototype.getUniqueModesOfTransport = function () {
   return this.journeys.map((journey) => {
-    return journey.transport([...new Set(journeys)])
-  })
+    return journey.transport;
+  }).filter((transport, index, array) => {
+    return array.indexOf(transport) === index});
 };
 
 
+// first attempt
 // Traveller.prototype.getUniqueModesOfTransport = function () {
 //   return this.journeys.filter((transport, index) => this.journeys.indexOf(transport) !== index);
 // };
 
+// second attempt
+// Traveller.prototype.getUniqueModesOfTransport = function () {
+//   return this.journeys.map((journey) => {
+//     return journey.transport([...new Set(journeys)])
+//   })
+// };
+
+// this was the other solution that John demonstrated.
+// Traveller.prototype.getUniqueModesOfTransport = function () {
+//   const allTransports = this.journeys.map(journey => {
+//     return journey.transport;
+//   });
+//   return [...new Set(allTransports)];
+// };
 
 module.exports = Traveller;
